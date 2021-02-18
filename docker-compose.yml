@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  web:
+    build: ./DockfilePhp/.
+    container_name: trucorpWEB
+    image: trucorp-web-2.0
+    hostname: test
+    ports:
+      - 7000:80
+    depends_on:
+      - db
+    restart:
+      always
+  db:
+    build: ./DockfileMysql/.
+    container_name: trucorpDB
+    image: trucorp-db-2.0
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
