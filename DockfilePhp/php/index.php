@@ -27,6 +27,13 @@
 <body>
     <h1>Trucorp</h1>
     <h3>Data Karyawan</h3>
+    <?php 
+    $no=1;
+    $data = mysqli_query($conn, "SELECT * FROM users");
+
+    $total = mysqli_num_rows($data);
+
+    ?>
 
     <p>Jumlah Total Karyawan: <b><?php echo $total ?></b> </p>
     <table>
@@ -36,11 +43,7 @@
             <th>KANTOR</th>
         </tr>
         <?php
-            $no=1;
-            $data = mysqli_query($conn, "SELECT * FROM users");
-
-            $total = mysqli_num_rows($data);
-
+            
             while($view = mysqli_fetch_array($data)){
         ?>
 
